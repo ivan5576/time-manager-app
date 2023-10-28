@@ -32,7 +32,26 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.wrapper {
+  height: 50vh;
+  width: 30vw;
+  border: 1px solid #282c34;
+  margin: 0 auto;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.MuiBottomNavigation-root {
+  width: 100% !important;
+  display: flex;
+  justify-content: space-around !important;
 }
