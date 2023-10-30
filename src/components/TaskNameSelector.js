@@ -4,6 +4,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 export const TaskNameSelector = () => {
   return (
     <Autocomplete
+      fullWidth={true}
       disablePortal
       id="combo-box-demo"
       options={activities}

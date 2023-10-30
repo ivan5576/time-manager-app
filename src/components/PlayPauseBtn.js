@@ -1,15 +1,18 @@
+import { useState } from 'react';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 
-export const PlayPauseBtn = () => {
-    // const handleSubmit = (e) => {
-    //         e.preventDefault();
-    //         const formDataObj = new FormData(e.target);
-    //         const newActivity = Object.fromEntries(formDataObj.entries());
-    //         // const newListActivities = [...activities, newActivity.title];
-    //         // setActivities(newListActivities);
-    //         // localStorage.setItem('activityTitles', JSON.stringify(newListActivities));
-    //       };
+export const PlayPauseBtn = (props) => {
+  const { onChange } = props;
+  const [playing, setPlaying] = useState(false);
+  const IconPlayPause = playing ? PauseCircleIcon : PlayCircleIcon;
+  const handleIconClicks = (e) => {
+    setPlaying(!playing);
+    onChange(!playing);
+    // console.log(e)
+  };
+
   return (
-        <PlayCircleIcon color="success" fontSize="large" />    
+    <IconPlayPause color="success" fontSize="large" onClick={(e) => handleIconClicks(e)} />
   )
 };

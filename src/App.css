@@ -48,10 +48,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: #f5f5f5;
+}
+
+.MuiAutocomplete-root {
+  width: 90% !important;
+  margin-top: 5%;
+}
+
+.MuiSvgIcon-fontSizeLarge {
+  width: 5em !important;
+  height: 5em !important;
 }
 
 .MuiBottomNavigation-root {
-  width: 100% !important;
+  width: 100%;
   display: flex;
   justify-content: space-around !important;
 }
