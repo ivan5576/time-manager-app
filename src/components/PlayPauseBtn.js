@@ -9,7 +9,6 @@ export const PlayPauseBtn = (props) => {
   const handleIconClicks = (e) => {
     setPlaying(!playing);
     onChange(!playing);
-    // console.log(e)
   };
 
   return (

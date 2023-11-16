@@ -5,28 +5,43 @@ export const TimerOfCurrTask = (props) => {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
-    // Side effect code here
-    // This code will run after the first render and after every update
-    // You can perform data fetching, subscriptions, or manually changing the DOM in here
-    // Cleanup function (optional)
     let currTime;
     if (playing) {
       const startDate = Date.now();
 
       currTime = setInterval(() => {
         setTime(Date.now() - startDate);
-      }, 1000)
+      }, 300)
     } else {
       clearInterval(currTime);
     }
     return () => {
-      // Code to run before the component is unmounted or before the effect runs again
-      // This is where you can clean up any subscriptions or other resources created by the effect
       clearInterval(currTime);
     };
   }, [playing]);
 
+  useEffect(() => {
+    // Log the timer value when playing becomes false
+    if (!playing) {
+
+      const currentDate = new Date(Date.now());
+
+      // Get UTC time as a string
+      const utcTimeString = currentDate.toISOString();
+
+      // Extract the date and time components
+      const utcDate = utcTimeString.substring(0, 10);
+      const utcTime = utcTimeString.substring(11, 19);
+
+      // Format the date and time
+      const formattedDate = `${utcDate}, ${utcTime} UTC`;
+
+      console.log(formattedDate);
+    }
+  }, [playing, time]);
+
   const formatTime = (milliseconds) => {
+
     const totalSeconds = Math.floor(milliseconds / 1000);
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -36,8 +51,9 @@ export const TimerOfCurrTask = (props) => {
     return formattedTime;
   }
 
-
   return (
-    <>{formatTime(time)}</>
+    <>
+      {formatTime(time)}
+    </>
   )
 };
